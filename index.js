@@ -72,13 +72,15 @@ app.use((req, res, next) => {
 //ROUTES
 app.use("/toughts", toughtsRoutes);
 app.use("/", authRoutes);
-
 app.get("/", ToughtController.showToughts); //vou utilizar o toughts controller para exibir todos o pensamentos na rota /, ou seja para exibir a mesma coisa que na rota /toughts
 
+const PORT = process.env.PORT || 3000;
 conn
   //.sync({ force: true })
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
   })
   .catch((err) => console.log(err));
