@@ -3,6 +3,8 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session); //iniciar a file store, dizendo que eu quero salvar as secões na pasta session
 const flash = require("express-flash");
+require("dotenv").config();
+
 //inicialização express
 const app = express();
 
