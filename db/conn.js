@@ -1,15 +1,15 @@
+require('dotenv').config(); // Carrega as variáveis do .env
+
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-  "mysql://root:xntSqToDpngnSryQDoCGNJFiDfESQmdD@roundhouse.proxy.rlwy.net:25725/railway",
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    dialect: "mysql",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    port: process.env.DB_PORT,
   }
 );
 
